@@ -1,0 +1,24 @@
+logging:
+  level:
+    root: debug
+
+server:
+  port: 18082
+
+spring:
+  security:
+    debug: true
+    saml2:
+      relyingparty:
+        registration:
+          okta:
+            signing:
+              credentials:
+                - private-key-location: classpath:local.key
+                  certificate-location: classpath:local.crt
+            singlelogout:
+              url: https://dev-03476261.okta.com/app/dev-03476261_baeldungspringsecuritysaml2app_1/exkaiyrva1HyFReqX5d7/slo/saml
+              binding: POST
+              response-url: "{baseUrl}/logout/saml2/slo"
+            assertingparty:
+              metadata-uri: "classpath:metadata/metadata-idp-okta.xml"
